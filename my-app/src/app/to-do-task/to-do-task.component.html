@@ -1,0 +1,27 @@
+<div class="outer">
+    <div class="main">
+        <div class="name">
+            <p class="title">TODO LIST</p>
+        </div>
+        <div class="filling">
+            <input placeholder="Type your task" [(ngModel)]="todoValue">
+            <button class="add-btn" (click)="addItem()">Add</button>
+        </div>
+        <div class="todo" *ngIf="todoItems.length>0">
+            <h5 class="items-header">TO DO</h5>
+            <div class="items" *ngFor="let item of todoItems; let i=index;">
+                <input type="checkbox" class="checkbox-item" [(ngModel)]="item.flag" (ngModelChange)="change(i)">
+                <p class="task-name" >{{item.description}}</p>
+                <button class="delete-btn" (click)="deleteItem(i)">delete</button>
+            </div>
+        </div>
+        <div class="todo-finished" *ngIf="fTodoItems.length>0">
+            <h5 class="items-header">FINISHED</h5>
+            <div class="items" *ngFor="let item of fTodoItems; let i=index;">
+                <input type="checkbox" class="checkbox-item" [(ngModel)]="item.flag" (ngModelChange)="changeFinish(i)">
+                <p class="task-name">{{item.description}}</p>
+                <button class="delete-btn"  (click)="fDeleteItem(i)">delete</button>
+            </div>
+        </div>
+    </div>
+</div>
